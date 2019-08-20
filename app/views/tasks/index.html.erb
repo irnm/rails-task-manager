@@ -1,0 +1,18 @@
+<h2>To Do List Manager</h2>
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <% if task.completed? %>
+        <input type="checkbox" disabled checked>
+      <% else %>
+       <input type="checkbox" disabled>
+      <% end %>
+      <%= link_to task.title, task_path(task.id) %>
+      <%= link_to 'Delete', task_path(task.id), method: :delete, data: { confirm: "Delete meee?" } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Add a new task", new_task_path %>
+
